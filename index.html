@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tzu Y.</title>
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alice&family=Noto+Sans+TC:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav>
+      <div class="nav-container">
+        <a href="/" class="logo">Tzu Y.</a>
+        <button class="menu-btn" aria-label="Toggle menu">
+          <img src="/img/hamburger.svg" alt="" class="menu-icon menu-path" />
+          <img
+            src="/img/close.svg"
+            alt=""
+            class="menu-icon close-path"
+            style="display: none"
+          />
+        </button>
+        <ul class="nav-links">
+          <li><a href="/about.html">about</a></li>
+          <li><a href="/project.html">project</a></li>
+        </ul>
+      </div>
+    </nav>
+    <main>
+      <div class="container">
+        <div class="text"></div>
+        <div class="cursor"></div>
+      </div>
+    </main>
+    <footer>
+      <p>Copyright © 2024 by Tzu Y.</p>
+    </footer>
+
+    <script>
+      const text = "Hi, I'm  Tzu.";
+      const textContainer = document.querySelector(".text");
+      let charIndex = 0;
+
+      function typeText() {
+        if (charIndex < text.length) {
+          const char = text.charAt(charIndex);
+          const span = document.createElement("span");
+          span.className = "char";
+          span.textContent = char;
+          span.style.animationDelay = `${charIndex * 0.1}s`;
+          textContainer.appendChild(span);
+          charIndex++;
+          setTimeout(typeText, 100);
+        }
+      }
+
+      // Start the animation when the page loads
+      window.addEventListener("load", typeText);
+    </script>
+  </body>
+</html>
