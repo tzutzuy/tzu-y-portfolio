@@ -18,9 +18,9 @@
       <div class="nav-container">
         <a href="./" class="logo">Tzu Y.</a>
         <button class="menu-btn" aria-label="Toggle menu">
-          <img src="./img/hamburger.svg" alt="" class="menu-icon menu-path" />
+          <img src="img/hamburger.svg" alt="" class="menu-icon menu-path" />
           <img
-            src="./img/close.svg"
+            src="img/close.svg"
             alt=""
             class="menu-icon close-path"
             style="display: none"
@@ -43,6 +43,40 @@
     </footer>
 
     <script>
+      // nav
+      const menuBtn = document.querySelector(".menu-btn");
+      const navLinks = document.querySelector(".nav-links");
+      const menuPath = document.querySelector(".menu-path");
+      const closePath = document.querySelector(".close-path");
+      const navItems = document.querySelectorAll(".nav-links a");
+
+      menuBtn.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+
+        // 切換選單圖示
+        if (navLinks.classList.contains("active")) {
+          menuPath.style.display = "none";
+          closePath.style.display = "block";
+        } else {
+          menuPath.style.display = "block";
+          closePath.style.display = "none";
+        }
+      });
+
+      navItems.forEach((item) => {
+        item.addEventListener("click", function (e) {
+          navItems.forEach((item) => item.classList.remove("active"));
+          this.classList.add("active");
+
+          // 在手機版時，點擊選項後關閉選單
+          if (window.innerWidth <= 576) {
+            navLinks.classList.remove("active");
+            menuPath.style.display = "block";
+            closePath.style.display = "none";
+          }
+        });
+      });
+      //index
       const text = "Hi, I'm  Tzu.";
       const textContainer = document.querySelector(".text");
       let charIndex = 0;
